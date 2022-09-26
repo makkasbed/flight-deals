@@ -1,4 +1,5 @@
 import requests
+from flight_data import FlightData
 
 
 class FlightSearch:
@@ -18,12 +19,26 @@ class FlightSearch:
         response = requests.request("GET", url, headers=headers, data=payload, files=files)
         return response.json()
 
-    def search(self, code, from_date, to_date):
-        url = self.url + "/search?fly_from=" + code + "&date_from=" + from_date + "&date_to=" + to_date
+    def search(self, code, from_date, to_date, origin="LON"):
+        url = self.url + "/search?fly_from=" + origin + "&fly_to=" + code + "&date_from=" + str(
+            from_date) + "&date_to=" + str(to_date)
 
         payload = {}
         headers = {
             'apikey': self.api_key
         }
         response = requests.request("GET", url, headers=headers, data=payload)
-        return response.json()
+        try:
+            data = response.json()["data"][0]
+        except IndexError:
+            return None
+
+        flight_data = FlightData(
+           price=data["price"],
+           code=data["flyFrom"],
+           from_city=data["route"][0]["cityFrom"],
+           to_city=data["route"][0]["cityTo"],
+           to_code=data["flyTo"]
+        )
+        return flight_data
+

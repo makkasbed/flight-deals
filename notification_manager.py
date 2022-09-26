@@ -14,4 +14,4 @@ class NotificationManager:
             from_=self.ANUM,
             to=phone
         )
-        return message
+        return message.sid, message.status
