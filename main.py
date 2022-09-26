@@ -38,7 +38,7 @@ for item in data['prices']:
         print(id, iata_code, city,search_results.from_city,lowest_price,search_results.price)
         if search_results.price < lowest_price:
             message = f"Low Price Alert! Only ${search_results.price} to fly from {search_results.from_city}-{search_results.code} to {search_results.to_city}-{search_results.to_code}"
-            result = notification_manager.send_sms(message, "+233242182591")
+            result = notification_manager.send_sms(message, "+233XXXXXXXX")
             print(result)
 
 
