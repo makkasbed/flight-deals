@@ -19,7 +19,7 @@ To build a cheap flight price comparator.
 
 **notification_manager.py** sends an SMS to users when the need arises
 
-**flight_data.py** handles the formating of the JSON data from the flight search API
+**flight_data.py** handles the formatting of the JSON data from the flight search API
 
 ### Prerequisites
 - A **SHEET_URL** that connects to your Google Sheets Project in Sheety.
