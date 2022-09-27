@@ -6,9 +6,8 @@ import os
 import datetime
 
 start_date = datetime.date.today() + datetime.timedelta(days=1)
-print(start_date)
 end_date = datetime.date.today() + datetime.timedelta(days=180)
-print(end_date)
+
 
 data_manager = DataManager(os.getenv("SHEET_URL"))
 flight_search = FlightSearch(os.getenv("FLIGHT_URL"), os.getenv("F_API_KEY"))
@@ -33,6 +32,10 @@ for item in data['prices']:
         print(id, city, code, results)
 
         search_results = flight_search.search(code, from_date=start_date, to_date=end_date)
+        if search_results.price < lowest_price:
+            message = f"Low Price Alert! Only ${search_results.price} to fly from {search_results.from_city}-{search_results.code} to {search_results.to_city}-{search_results.to_code}"
+            result = notification_manager.send_sms(message, "+233XXXXXXXX")
+            print(result)
     else:
         search_results = flight_search.search(iata_code, start_date, end_date)
         print(id, iata_code, city,search_results.from_city,lowest_price,search_results.price)

@@ -20,3 +20,25 @@ To build a cheap flight price comparator.
 **notification_manager.py** sends an SMS to users when the need arises
 
 **flight_data.py** handles the formating of the JSON data from the flight search API
+
+### Prerequisites
+- A **SHEET_URL** that connects to your Google Sheets Project in Sheety.
+
+
+- An **F_API_KEY** that is the API KEY from Tequila
+
+- A **FLIGHT_URL** that links to the Tequila Base URL
+
+- An **SID** from Twilio
+
+- An **SKEY** from Twilio
+
+- An **ANUM** which is a phone number from Twilio.
+
+These parameters can be set as environment variables using the **export** feature.
+
+Example:
+
+``
+export SID=a2v35bh6ji89ue
+``
