@@ -35,7 +35,7 @@ To build a cheap flight price comparator.
 
 - An **ANUM** which is a phone number from Twilio.
 
-These parameters can be set as environment variables using the **export** feature.
+These parameters can be set as environment variables using the **export** command.
 
 Example:
 
